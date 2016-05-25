@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BookList</key>
+	<string>http://tpbookserver.herokuapp.com/books</string>
+	<key>Book</key>
+	<string>http://tpbookserver.herokuapp.com/book/*</string>
+	<key>BookCover</key>
+	<string>https://covers.openlibrary.org/b/isbn/*.jpg</string>
+</dict>
+</plist>
