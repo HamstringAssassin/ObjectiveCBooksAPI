@@ -48,49 +48,4 @@
     return shortBookModels.copy;
 }
 
-- (void)bookModelWithId:(NSString *)bookId handler:(booksFetcherBlock)booksFetcherBlock {
-    [self bookDataWithId:bookId andHandler:^(id data) {
-        NSArray *bookModel = [self bookModelFromData:data];
-        booksFetcherBlock(bookModel.copy);
-    }];
-}
-
-- (NSArray *)bookModelFromData:(NSArray *)data {
-    NSMutableArray *bookArray = [NSMutableArray new];
-    for (NSDictionary *bookData in data) {
-        BookModel *bookModel = [[BookModel alloc] initWithData:bookData];
-        [self updateBookModelWithCover:bookModel];
-        [bookArray addObject:bookModel];
-    }
-    return bookArray.copy;
-}
-
-- (void)updateBookModelWithCover:(BookModel *)bookModel {
-    if (bookModel.isbn) {
-        [bookModel updateCoverData:[self bookCoverWithISBN:bookModel.isbn]];
-    }
-}
-
-- (NSData *)bookCoverWithISBN:(NSString *)isbn {
-    NSURL *bookCoverURL = [[BookServerURLReader bookServerURLReaderSingleton] bookCoverURLWithISBN:isbn];
-    NSData *imageData = [NSData dataWithContentsOfURL:bookCoverURL];
-    return imageData;
-}
-
-- (void)bookDataWithId:(NSString *)bookId andHandler:(BookDataBlock)bookDataBlock {
-    NSURL *singleBookURL = [[BookServerURLReader bookServerURLReaderSingleton] urlForBookId:bookId];
-    __block NSDictionary *results;
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:singleBookURL.absoluteString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        results = (NSDictionary *)responseObject;
-        bookDataBlock(@[results]);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        bookDataBlock(@[[self handleErrorMessage]]);
-    }];
-}
-
-- (NSDictionary *) handleErrorMessage {
-    return @{@"description":@"uh-oh... Something went wrong. Unknown Book."};
-}
-
 @end

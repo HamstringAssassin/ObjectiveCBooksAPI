@@ -7,18 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataFetcher.h"
 
-/**
- *  Books Fetcher Block
- *
- *  @param books an array of books
- */
-typedef void (^booksFetcherBlock)(NSArray *books);
-typedef void (^BookDataBlock)(id data);
-
-
-
-@interface BooksFetcher : NSObject
+@interface BooksFetcher : NSObject <DataFetcher>
 
 /**
  *  gets a list of all books
@@ -26,13 +17,5 @@ typedef void (^BookDataBlock)(id data);
  *  @param booksFetcherBlock a return block
  */
 - (void)getBooks:(booksFetcherBlock)booksFetcherBlock;
-
-/**
- *  gets information on a specific book
- *
- *  @param bookId            a book id
- *  @param booksFetcherBlock a return block
- */
-- (void)bookModelWithId:(NSString *)bookId handler:(booksFetcherBlock)booksFetcherBlock;
 
 @end

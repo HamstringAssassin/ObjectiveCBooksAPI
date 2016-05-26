@@ -34,6 +34,9 @@
 		609B1FB71CE93013002E4D88 /* BookViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 609B1FB61CE93013002E4D88 /* BookViewModelSpec.m */; };
 		609B1FB91CE932A0002E4D88 /* ShortBookModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 609B1FB81CE932A0002E4D88 /* ShortBookModelSpec.m */; };
 		609B1FBB1CE932AF002E4D88 /* BookListViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 609B1FBA1CE932AF002E4D88 /* BookListViewModelSpec.m */; };
+		60F9FF401CF7692300F9D4F4 /* BookFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F9FF3F1CF7692300F9D4F4 /* BookFetcher.m */; };
+		60F9FF461CF7A3AD00F9D4F4 /* BookModelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F9FF451CF7A3AD00F9D4F4 /* BookModelProvider.m */; };
+		60F9FF491CF7A3BC00F9D4F4 /* BookListModelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F9FF481CF7A3BC00F9D4F4 /* BookListModelProvider.m */; };
 		7E77EB355FA174482774CB3D /* libPods-BooksAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C652754E46F7921861733855 /* libPods-BooksAPI.a */; };
 		807AA2551CE20D0B003E2335 /* BookListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 807AA2541CE20D0B003E2335 /* BookListViewModel.m */; };
 		807AA2581CE212DF003E2335 /* BookListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 807AA2571CE212DF003E2335 /* BookListTableViewCell.m */; };
@@ -108,6 +111,13 @@
 		609B1FB61CE93013002E4D88 /* BookViewModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookViewModelSpec.m; sourceTree = "<group>"; };
 		609B1FB81CE932A0002E4D88 /* ShortBookModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortBookModelSpec.m; sourceTree = "<group>"; };
 		609B1FBA1CE932AF002E4D88 /* BookListViewModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListViewModelSpec.m; sourceTree = "<group>"; };
+		60F9FF3E1CF7692300F9D4F4 /* BookFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookFetcher.h; path = BookFetcher/BookFetcher.h; sourceTree = "<group>"; };
+		60F9FF3F1CF7692300F9D4F4 /* BookFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookFetcher.m; path = BookFetcher/BookFetcher.m; sourceTree = "<group>"; };
+		60F9FF421CF7696600F9D4F4 /* DataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataFetcher.h; path = Fetcher/DataFetcher.h; sourceTree = "<group>"; };
+		60F9FF441CF7A3AD00F9D4F4 /* BookModelProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookModelProvider.h; sourceTree = "<group>"; };
+		60F9FF451CF7A3AD00F9D4F4 /* BookModelProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModelProvider.m; sourceTree = "<group>"; };
+		60F9FF471CF7A3BC00F9D4F4 /* BookListModelProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListModelProvider.h; sourceTree = "<group>"; };
+		60F9FF481CF7A3BC00F9D4F4 /* BookListModelProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListModelProvider.m; sourceTree = "<group>"; };
 		622354BE82F2A471AFBB25DC /* libPods-BooksAPIUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BooksAPIUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		807AA2531CE20D0B003E2335 /* BookListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListViewModel.h; sourceTree = "<group>"; };
 		807AA2541CE20D0B003E2335 /* BookListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListViewModel.m; sourceTree = "<group>"; };
@@ -192,6 +202,8 @@
 				606B57F21CE0FA5100E82D9E /* BookModel.m */,
 				602828331CE25581001A8647 /* BookViewDataController.h */,
 				602828341CE25581001A8647 /* BookViewDataController.m */,
+				60F9FF441CF7A3AD00F9D4F4 /* BookModelProvider.h */,
+				60F9FF451CF7A3AD00F9D4F4 /* BookModelProvider.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,6 +230,7 @@
 		6028283E1CE2567C001A8647 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				60F9FF411CF7694600F9D4F4 /* Fetcher */,
 				6028283F1CE25685001A8647 /* DataController */,
 				602828431CE25AC6001A8647 /* Model */,
 				602828441CE25ACF001A8647 /* View */,
@@ -357,6 +370,8 @@
 				606B57F51CE0FC9B00E82D9E /* BookListDataController.m */,
 				606B57ED1CE0FA3800E82D9E /* ShortBookModel.h */,
 				606B57EE1CE0FA3800E82D9E /* ShortBookModel.m */,
+				60F9FF471CF7A3BC00F9D4F4 /* BookListModelProvider.h */,
+				60F9FF481CF7A3BC00F9D4F4 /* BookListModelProvider.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -389,6 +404,7 @@
 		606B58091CE1059600E82D9E /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				60F9FF3D1CF768EF00F9D4F4 /* BookFetcher */,
 				606B580A1CE1059D00E82D9E /* BookServer */,
 				6028282E1CE25514001A8647 /* BooksFetcher */,
 				807AA25C1CE3642B003E2335 /* Categories */,
@@ -479,6 +495,23 @@
 				609B1FB41CE92E9B002E4D88 /* UIFont+BooksAPISpec.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		60F9FF3D1CF768EF00F9D4F4 /* BookFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				60F9FF3E1CF7692300F9D4F4 /* BookFetcher.h */,
+				60F9FF3F1CF7692300F9D4F4 /* BookFetcher.m */,
+			);
+			name = BookFetcher;
+			sourceTree = "<group>";
+		};
+		60F9FF411CF7694600F9D4F4 /* Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				60F9FF421CF7696600F9D4F4 /* DataFetcher.h */,
+			);
+			name = Fetcher;
 			sourceTree = "<group>";
 		};
 		807AA25C1CE3642B003E2335 /* Categories */ = {
@@ -769,6 +802,7 @@
 			files = (
 				807AA2581CE212DF003E2335 /* BookListTableViewCell.m in Sources */,
 				606B57F61CE0FC9B00E82D9E /* BookListDataController.m in Sources */,
+				60F9FF491CF7A3BC00F9D4F4 /* BookListModelProvider.m in Sources */,
 				807AA2651CE364C1003E2335 /* UIFont+BooksAPI.m in Sources */,
 				807AA2551CE20D0B003E2335 /* BookListViewModel.m in Sources */,
 				602828351CE25581001A8647 /* BookViewDataController.m in Sources */,
@@ -776,6 +810,8 @@
 				606B57F91CE0FCC100E82D9E /* BooksFetcher.m in Sources */,
 				606B57F31CE0FA5100E82D9E /* BookModel.m in Sources */,
 				6028283A1CE255A3001A8647 /* BookViewModel.m in Sources */,
+				60F9FF461CF7A3AD00F9D4F4 /* BookModelProvider.m in Sources */,
+				60F9FF401CF7692300F9D4F4 /* BookFetcher.m in Sources */,
 				603DB7811CE3C65B008A8B3D /* BookListViewController.m in Sources */,
 				807AA2681CE37642003E2335 /* UIColor+BooksAPI.m in Sources */,
 				606B57EF1CE0FA3800E82D9E /* ShortBookModel.m in Sources */,

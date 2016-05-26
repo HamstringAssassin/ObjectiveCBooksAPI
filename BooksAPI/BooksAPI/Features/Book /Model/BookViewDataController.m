@@ -7,12 +7,13 @@
 //
 
 #import "BookViewDataController.h"
-#import "BooksFetcher.h"
 #import "BookViewModel.h"
 #import "BookModel.h"
+#import "BookFetcher.h"
+#import "BookModelProvider.h"
 
 @interface BookViewDataController ()
-@property (nonatomic, readwrite, strong) BooksFetcher *booksFetcher;
+@property (nonatomic, strong) BookFetcher *bookFetcher;
 @end
 
 @implementation BookViewDataController
@@ -20,12 +21,16 @@
 - (instancetype)initWithContext:(NSString *)context ViewModelsHandler:(ViewModelsHandler) viewModelsHandler {
     self = [super init];
     if (self) {
-        _booksFetcher = [BooksFetcher new];
-        [_booksFetcher bookModelWithId:context handler:^(NSArray *books) {
-            BookViewModel *bookViewModel = [self viewModelsFromBook:[books firstObject]];
-            viewModelsHandler(@[bookViewModel]);
+        _bookFetcher = [BookFetcher new];
+        
+        [_bookFetcher bookDataWithId:context andHandler:^(id data) {
+            if ([data isKindOfClass:[NSArray class]]) {
+                BookModel *bookModel = [BookModelProvider modelFromData:(NSArray *)data];
+                BookViewModel *bookViewModel = [self viewModelsFromBook:bookModel];
+                viewModelsHandler(@[bookViewModel]);
+            }
         }];
-    }
+}
     return self;
 }
 
