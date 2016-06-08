@@ -12,13 +12,11 @@
 @implementation BookModelProvider
 
 +(BookModel *)modelFromData:(NSArray *)data {
-    NSMutableArray *bookArray = [NSMutableArray new];
-    for (NSDictionary *bookData in data) {
-        BookModel *bookModel = [[BookModel alloc] initWithData:bookData];
-        [self updateBookModelWithCover:bookModel];
-        [bookArray addObject:bookModel];
-    }
-    return bookArray.copy;
+    NSDictionary *bookData = [data firstObject];
+    BookModel *bookModel = [[BookModel alloc] initWithData:bookData];
+    [self updateBookModelWithCover:bookModel];
+
+    return bookModel;
 }
 
 + (void)updateBookModelWithCover:(BookModel *)bookModel {
